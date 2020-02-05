@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateSpoiler">
+
+    <EditText
+        android:id="@+id/textTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="49dp"
+        android:hint="Titre :"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginStart="65dp"
+        android:text="save"
+        android:onClick="savedata"/>
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/save"
+        android:layout_marginEnd="54dp"
+        android:onClick="senddata"
+        android:text="send" />
+
+    <EditText
+        android:id="@+id/textcreatespoiler"
+        android:hint="Spoilez votre histoire !"
+        android:layout_width="383dp"
+        android:layout_height="259dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/save"
+        android:layout_marginStart="-65dp"
+        android:layout_marginTop="140dp"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+</RelativeLayout>
