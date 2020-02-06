@@ -2,10 +2,12 @@ package e.allou.spoilers.roomdb;
 
 import java.util.List;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+@Dao
 public interface DataDao {
 
     @Query("SELECT * FROM dataentity")

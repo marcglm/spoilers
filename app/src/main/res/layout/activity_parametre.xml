@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Parametre">
+
+    <TextView
+        android:id="@+id/parametre_nom_user"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/parametre_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <ImageButton
+
+        android:id="@+id/parametre_spoiler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:filterTouchesWhenObscured="false"
+        android:foregroundGravity="center"
+        android:onClick="startMySpoilerActivity"
+        android:src="@android:drawable/btn_star_big_on"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.369" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/deconnexion"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:gravity="bottom|center"
+            android:onClick="logout"
+            android:text="deconnexion"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="392dp" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

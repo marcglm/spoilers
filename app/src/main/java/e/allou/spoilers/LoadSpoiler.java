@@ -16,10 +16,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Bdd extends AppCompatActivity {
+public class LoadSpoiler extends AppCompatActivity {
 
     private static final String KEY_SYNOPSIS = "synopsis" ;
     private static final String KEY_CONTENU = "contenu" ;
@@ -46,10 +43,7 @@ public class Bdd extends AppCompatActivity {
 
 
 
-        String text = "what up";
 
-        //Setting Textview
-        textView.setText(text);
 
     }
     public void loadNote(View view){
@@ -61,7 +55,7 @@ public class Bdd extends AppCompatActivity {
                     @Override
 
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Toast.makeText(Bdd.this,"Connexion reussi",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoadSpoiler.this,"Connexion reussi",Toast.LENGTH_SHORT).show();
                         if(documentSnapshot.exists()){
 
                             String synopsis = documentSnapshot.getString(KEY_SYNOPSIS);
@@ -74,8 +68,9 @@ public class Bdd extends AppCompatActivity {
 
                         }
                         else{
-                            Toast.makeText(Bdd.this,"le document n'existe pas",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoadSpoiler.this,"le document n'existe pas",Toast.LENGTH_SHORT).show();
                             //TODO : Proposer de Créer un SPOILER
+
                         }
 
                     }
@@ -83,7 +78,7 @@ public class Bdd extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Bdd.this,"Erreur !",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoadSpoiler.this,"Erreur !",Toast.LENGTH_SHORT).show();
 
 
                     }

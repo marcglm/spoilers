@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CameraActivity">
 
     <SurfaceView
         android:id="@+id/surfaceId"
@@ -21,7 +21,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonLoadBdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -30,5 +30,15 @@
         android:layout_marginEnd="15dp"
         android:onClick="startbdd"
         android:text="LoadBdd" />
+
+    <Button
+        android:id="@+id/accessParameter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/buttonLoadBdd"
+        android:layout_marginBottom="84dp"
+        android:text="Parametre"
+        android:onClick="accessParameter"/>
 
 </RelativeLayout>

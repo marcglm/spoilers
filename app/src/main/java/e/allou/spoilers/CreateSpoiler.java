@@ -15,20 +15,27 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.room.Room;
+import e.allou.spoilers.roomdb.DataEntity;
+import e.allou.spoilers.roomdb.SpoilerDB;
+
 public class CreateSpoiler extends AppCompatActivity {
 
     private EditText editTextSynopsis;
     private EditText editTextTitre;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Map<String, Object> dt = new HashMap<>();
-    private String auteur ="Spoiler 1";
+    private String titre = "titre vide";
+    private String synopsis = "synopsis vide";
+    private SpoilerDB spoilerDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_spoiler);
         editTextSynopsis = (EditText)findViewById(R.id.textcreatespoiler);
-        editTextTitre = (EditText)findViewById(R.id.textTitre);
+        editTextTitre = (EditText)findViewById(R.id.mySpoilerTitre);
         String spoilerdt = "nothing";
 
 
@@ -36,7 +43,29 @@ public class CreateSpoiler extends AppCompatActivity {
 
     public void savedata(View view) {
         //Save Data in local #Persistence de donnée
-        //TODO : Ajouter les données dans La BDD.
+        spoilerDB = Room.databaseBuilder(getApplicationContext(), SpoilerDB.class, "dataentity").allowMainThreadQueries().build();
+        titre = editTextTitre.getText().toString();
+        synopsis = editTextSynopsis.getText().toString();
+
+        if(!isSynopsisEmpty(synopsis) && !isTitleEmpty(titre)){
+            DataEntity entity = new DataEntity();
+            entity.synopsis = synopsis;
+            entity.titre = titre;
+            spoilerDB.dataDao().insertAll(entity);
+
+            DataEntity entity1 = new DataEntity();
+            entity1 = spoilerDB.dataDao().findByTitre(titre);
+            Toast.makeText(this, entity1.titre, Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(this, "Contenu Non Valide", Toast.LENGTH_SHORT).show();
+
+    }
+    public boolean isTitleEmpty(String title){
+        return title.isEmpty();
+    }
+
+    public boolean isSynopsisEmpty(String spoiler){
+        return spoiler.isEmpty();
     }
 
     public void senddata(View view) {

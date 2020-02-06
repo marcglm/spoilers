@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 
 public class Login extends AppCompatActivity {
     private EditText editTextEmail;
@@ -21,8 +21,9 @@ public class Login extends AppCompatActivity {
     private String email;
     private String password;
     private FirebaseAuth mAuth;
+    private boolean isConnected = false;
     private final String TAG = "Login";
-
+    private final String KEY_EMAIL = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,14 @@ public class Login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             //updateUI(user);
+                            isConnected = true;
+                            String[] userData = {email,password};
+                            Gson gson = new Gson();
+                            String json = gson.toJson(userData);
+                            accessCameraAcitivity(email);
 
                             //TODO: Renvoyer l'email/nom de l'utilisateur
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(Login.this, "Connexion Echoué ", Toast.LENGTH_SHORT).show();
@@ -73,6 +80,13 @@ public class Login extends AppCompatActivity {
                 });
         //Fonction sur Bouton de Connexiont²
 
+    }
+
+    private void accessCameraAcitivity(String email) {
+
+            Intent intentCameraActivity = new Intent(this, CameraActivity.class);
+            intentCameraActivity.putExtra(KEY_EMAIL,email);
+            startActivity(intentCameraActivity);
     }
 
     public void signUpUser(View view) {

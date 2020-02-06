@@ -27,6 +27,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/inscription_confirme_mot_de_passe"
+        android:hint="@string/confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        />
 
     <Button
         android:id="@+id/button_confirmer"
