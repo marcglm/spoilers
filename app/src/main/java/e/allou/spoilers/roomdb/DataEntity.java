@@ -21,6 +21,10 @@ public class DataEntity  {
     public String synopsis;
 
 
+
+
+
+
     public int getId() {
         return id;
     }

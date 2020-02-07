@@ -15,14 +15,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import androidx.room.Room;
+import e.allou.spoilers.roomdb.SpoilerDB;
+import e.allou.spoilers.usersName.UsersEntity;
+import e.allou.spoilers.usersName.UsersRoom;
+
 public class Inscription extends AppCompatActivity {
     private EditText textEmail;
     private EditText textPassword;
     private EditText textConfirmPassword;
     private EditText userName;
-    private String email ="",password="",confirmPassword="";
+    private UsersEntity usersEntity;
+    private String email ="",password="",confirmPassword="",inputUserName="";
     private FirebaseAuth mAuths;
     private final String TAG = "Inscription";
+    private UsersRoom usersRoom;
+
+
 
     private boolean passwordConfirmed = false;
 
@@ -39,13 +48,22 @@ public class Inscription extends AppCompatActivity {
         mAuths = FirebaseAuth.getInstance();
 
 
+
     }
 
     public void submit(View view) {
         //Creer un utisateur
+        inputUserName = userName.getText().toString();
         email = textEmail.getText().toString();
         password = textPassword.getText().toString();
         confirmPassword = textConfirmPassword.getText().toString();
+        usersRoom = Room.databaseBuilder(getApplicationContext(),UsersRoom.class,"users").allowMainThreadQueries().build();
+        usersEntity = new UsersEntity();
+
+        usersEntity.email = email;
+        usersEntity.username = inputUserName;
+
+
 
         if(isPasswordConfirm(password,confirmPassword) && password.length()>6){
             passwordConfirmed = true;
@@ -61,6 +79,9 @@ public class Inscription extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(Inscription.this, "Inscription Réussi", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuths.getCurrentUser();
+
+                                usersRoom.usersDao().insertAll(usersEntity);
+
                                 //updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.

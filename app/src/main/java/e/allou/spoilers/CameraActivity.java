@@ -245,7 +245,6 @@ public class CameraActivity extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(CameraActivity.this,"le document n'existe pas",Toast.LENGTH_SHORT).show();
-                            //TODO : Proposer de Créer un SPOILER
 
                         }
 

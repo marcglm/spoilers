@@ -20,4 +20,6 @@
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
     <string name="confirmPassword">Confirmer votre mot de passe</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

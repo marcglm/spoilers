@@ -29,7 +29,17 @@
         <activity android:name=".Inscription" />
         <activity android:name=".Parametre" />
         <activity android:name=".MySpoilers" />
-        <activity android:name=".ShowSpoiler"></activity>
+        <activity android:name=".ShowSpoiler" />
+
+        <receiver android:name=".ParameterWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/parameter_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
