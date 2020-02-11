@@ -29,7 +29,6 @@
         android:layout_marginBottom="95dp"
         android:onClick="accessParameter"
         android:text="Parametre" />
-
     <Button
         android:id="@+id/buttonLoadBdd"
         android:layout_width="wrap_content"
